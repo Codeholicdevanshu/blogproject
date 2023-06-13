@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align:center;">Write Your Blog Here</h1>
+
+<div class="container">
+<form action="/blog_upload" method="post">
+    {% csrf_token %}
+    <!--title-->
+    <label for="exampleFormControlInput1" class="form-label" >title</label>
+    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="text">
+    <!--discription-->
+      <label for="exampleFormControlTextarea1" class="form-label">discription</label>
+    <textarea name="discription"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    <!--text-->
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea name="text"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea><br>
+    <input style="background-color:rgb(175, 227, 71); border-radius:50px;" type="submit" value="Submit">
+</form>
+</div>
+
+{% endblock content %}

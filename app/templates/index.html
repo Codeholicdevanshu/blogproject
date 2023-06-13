@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+       {% for x in blog  %}
+       <div class="col-md-3">
+            <div class="card" >
+                <div class="card-body">
+                <h5 class="card-title">{{x.title}}</h5>
+                <p class=card-text>{{x.discription}}</p>
+                <p class="card-text">{{x.text}}</p>
+                <p class="card-text">{{x.date}}</p>
+                {% if request.session.user %}
+                 <a class="btn btn-danger" href="/delete/{{x.id}}">Delete</a>
+                {% else %}
+                <a href="/register" class=" btn btn-success" role="button" aria-pressed="true">View</a>
+                
+                {% endif %}
+              </div>
+        </div>
+       </div>
+       {% endfor %}
+{% endblock %}

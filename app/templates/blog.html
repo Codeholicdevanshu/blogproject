@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+       {% for x in page_obj  %}
+       <div class="col-md-3">
+            <div class="card" >
+                <div class="card-body">
+                <h5 class="card-title">{{x.title}}</h5>
+                <p class=card-text>{{x.discription}}</p>
+                <p class="card-text">{{x.text}}</p>
+                <p class="card-text">{{x.date}}</p>
+                <a class="btn btn-danger" href="/delete/{{x.id}}">Delete</a>
+                <a href="update/{{x.id}}" class="btn btn-warning">Edit</a>
+              </div>
+        </div>
+       </div>
+       {% endfor %}
+
+       <div>
+  <span>
+    {% if page_obj.has_previous %}
+      <a  href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+    <span>
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% endif %}
+  </span>
+</div>
+</div>
+{% endblock content %}
